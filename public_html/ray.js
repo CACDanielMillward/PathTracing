@@ -18,6 +18,7 @@ function Ray(start, dir) {
         
         for (var i = 0; i < theScene.length;i++) { // for every object in the scene
                 //do quadratic formula
+
             var aMinusC = math.subtract(start, theScene[i].center);
             var a = 1;
             //math.dot(this.direction, this.direction);
@@ -29,11 +30,11 @@ function Ray(start, dir) {
             if (discriminant < 0) {
                 //hitSomething's already false, so...
                
-            } else if (discriminant === 0) {
+            } else if (discriminant === 0) { // perpendicular to sphere
                 this.hitSomething = true;
                 var answer = -b/(2*a);
                 intersections.push([i],[answer]);
-            } else if (discriminant > 0 ) {
+            } else if (discriminant > 0 ) { // actually hit something
                 this.hitSomething = true;
                var q = -0.5 * (b + Math.sign(b)* Math.sqrt(discriminant));
                console.log("b: " + b);
@@ -65,8 +66,8 @@ function Ray(start, dir) {
                 }
             }
             
-        this.distanceToPointBetter = lowest;
-        this.kindaIDBetter = toReturn;
+        this.distanceToPointBetter = lowest; // distance
+        this.kindaIDBetter = toReturn; // what it hit
         
         console.log(lowest);
         this.hasRunFindBetter = true;
@@ -76,7 +77,7 @@ function Ray(start, dir) {
     
     
     
-    this.pointWhereObjectWasHit = function() {
+    this.pointWhereObjectWasHit = function() { // point in space where sphere was hit
         if (this.hasRunFindBetter !== true) {
             var temp = this.FindNearestObject();
         }

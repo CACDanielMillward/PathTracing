@@ -12,29 +12,21 @@ function Sphere(cen, rad, specular, rough, emit) {
     this.emittance = emit;
 }
 
-//hello, Github!
+//Spheres in the scene.
 var theScene = [
-    new Sphere(math.matrix([-30,60,70]), 20, 0.01, 0.1, 0.1),
-    new Sphere(math.matrix([1,60,70]), 50, 0.01, 0.1, 0.9),
-    new Sphere(math.matrix([30,66,48]), 20, 0.4, 0.4, 0.4)
+    new Sphere(math.matrix([-30,0,25]), 30, 0.4, 0.1, 0.9),
+    new Sphere(math.matrix([10,10,30]), 20, 0.01, 0.01, 0)
 ];
 
+//calculates BRDF based on rays and material properties
 function BRDF(specColor, roughness, inRay, outRay, normal) {
     var tempH = math.add(inRay, outRay);
     var myX = math.subset(tempH, math.index(0));
     var myY = math.subset(tempH, math.index(1));
     var myZ = math.subset(tempH, math.index(2));
     
-    var h = normalize(myX, myY, myZ);
-    
-//    var bottomH = math.abs(tempH);
-//        console.log("top: " + tempH);
-//    console.log("bottom: " + bottomH);
-//    var h = math.divide(tempH, bottomH);
-    
-    console.log("h: " + h);
-
-    console.log("normal: " + normal);
+    var h = normalize(myX, myY, myZ); // normalized h part of BRDF
+//TODO: normalize?
     var nTimesH = math.dot(normal, h);
     var DPartOne = 1/(Math.PI * roughness * roughness * Math.pow(nTimesH, 4));
     var DPartTwo = Math.exp((nTimesH*nTimesH-1)/(roughness*roughness*nTimesH*nTimesH));
@@ -52,6 +44,7 @@ function BRDF(specColor, roughness, inRay, outRay, normal) {
     return brdf;
 }
 
+//normalize 3 numbers
 function normalize(x,y,z) {
     var length = Math.sqrt(x*x + y*y + z*z);
     var normaledX = x / length;
@@ -61,6 +54,7 @@ function normalize(x,y,z) {
     return normalizedMatrix;
 }
 
+//normalize a math.matrix object
 function mathNorm(vector) {
     var hypotenuse = math.hypot(vector);
     var normalizedVec = math.divide(vector, hypotenuse);

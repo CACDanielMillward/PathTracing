@@ -31,8 +31,10 @@ function tracing(ray, depth) {
     var newRay = new Ray(newRayOrigin, newRayDirection);
     
     const p = 1/(2*Math.PI);
-    
-    var cos_theta = math.dot(newRay.direction, ray.normalWhereObjWasHit());
+    //TAKEOUT
+    var newRaynorm = mathNorm(newRay.direction);
+    var normalNormy = mathNorm(ray.normalWhereObjWasHit());
+    var cos_theta = math.dot(newRaynorm, normalNormy);
     var theBRDF = BRDF(
             theScene[ray.kindaIDBetter].specular,
             theScene[ray.kindaIDBetter].roughVal,

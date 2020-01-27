@@ -5,8 +5,8 @@
  */
 
 //coordinates of top left corner of window
-const TopLeftPixelX = -60; //-50
-const TopLeftPixelY = 60; //50
+const TopLeftPixelX = -50; //-50
+const TopLeftPixelY = 25; //50
 const TopLeftPixelZ = 40;
 const PixelWidth = 1;
 
