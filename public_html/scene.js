@@ -60,3 +60,9 @@ function normalize(x,y,z) {
     var normalizedMatrix = math.matrix([normaledX, normaledY, normaledZ]);
     return normalizedMatrix;
 }
+
+function mathNorm(vector) {
+    var hypotenuse = math.hypot(vector);
+    var normalizedVec = math.divide(vector, hypotenuse);
+    return normalizedVec;
+}

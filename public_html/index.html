@@ -55,7 +55,7 @@ and open the template in the editor.
 //var theFinalPicture = Render(maxWidth, maxHeight, maxSamples);
 
 var testingCamera = new Camera();
-var maximumDepth = 25;
+var maximumDepth = 2;
 //var pictureArray = new Array(10); // width
 //
 //for (var m = 0; m < pictureArray.length; m++) {
@@ -77,7 +77,7 @@ for (var m = 0; m < pictureArray.length; m++) {
     
       for (var i = 0; i < 100; i++) {
         for (var j = 0; j < 100; j++) {
-            for (var k = 0; k < maximumDepth; k++) {
+            for (var k = 0; k < 2; k++) {
                                             var testingRay = testingCamera.generateRay(i,j);
             var testingOne = tracing(testingRay, 0);
             
@@ -89,7 +89,7 @@ for (var m = 0; m < pictureArray.length; m++) {
          }
             }
 
-            pictureArray[i][j] = pictureArray[i][j] / maximumDepth;
+            pictureArray[i][j] = pictureArray[i][j] / 2;
         }
     }
                    console.log("THe array: " + pictureArray);
