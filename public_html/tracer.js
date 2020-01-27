@@ -35,16 +35,25 @@ function tracing(ray, depth) {
     var newRaynorm = mathNorm(newRay.direction);
     var normalNormy = mathNorm(ray.normalWhereObjWasHit());
     var cos_theta = math.dot(newRaynorm, normalNormy);
-    var theBRDF = BRDF(
-            theScene[ray.kindaIDBetter].specular,
-            theScene[ray.kindaIDBetter].roughVal,
-            ray.direction,
-            newRay.direction,
-            ray.normalWhereObjWasHit());
+    
+    
+    var theBRDF = theScene[ray.kindaIDBetter].roughVal / Math.PI;
+            
+            
+            
+            
+//            BRDF(
+//            theScene[ray.kindaIDBetter].specular,
+//            theScene[ray.kindaIDBetter].roughVal,
+//            ray.direction,
+//            newRay.direction,
+//            ray.normalWhereObjWasHit());
+            
+            
+            
     depth += 1;            
     var incoming = tracing(newRay, depth);
     
-    console.log(theScene[ray.kindaIDBetter].emittance);
     
     return theScene[ray.kindaIDBetter].emittance + (theBRDF * incoming * cos_theta / p);
 }

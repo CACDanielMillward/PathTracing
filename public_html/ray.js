@@ -20,13 +20,13 @@ function Ray(start, dir) {
                 //do quadratic formula
 
             var aMinusC = math.subtract(start, theScene[i].center);
+            let aMinusCnorm = mathNorm(aMinusC);
             var a = 1;
-            //math.dot(this.direction, this.direction);
+
             var b = math.multiply(2, math.dot(this.direction, aMinusC));
             var c = math.subtract(math.dot(aMinusC, aMinusC), (theScene[i].radius * theScene[i].radius));
             
             var discriminant = (Math.pow(b,2))-4*a*c;
-            console.log("discriminant: " + discriminant);
             if (discriminant < 0) {
                 //hitSomething's already false, so...
                
@@ -37,14 +37,12 @@ function Ray(start, dir) {
             } else if (discriminant > 0 ) { // actually hit something
                 this.hitSomething = true;
                var q = -0.5 * (b + Math.sign(b)* Math.sqrt(discriminant));
-               console.log("b: " + b);
-               console.log("c: " + c);
-               console.log("q: " + q);
+
                var xOne = q/a;
-               console.log("first intersect: " + xOne);
+
                
                var xTwo = c/q;
-               console.log("second intersect: " + xTwo);
+
                if (xOne < xTwo) {
                    intersections[0].push(i);
                    intersections[1].push(xOne);
@@ -69,7 +67,7 @@ function Ray(start, dir) {
         this.distanceToPointBetter = lowest; // distance
         this.kindaIDBetter = toReturn; // what it hit
         
-        console.log(lowest);
+
         this.hasRunFindBetter = true;
         
         return toReturn;    

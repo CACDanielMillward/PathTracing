@@ -77,7 +77,7 @@ for (var m = 0; m < pictureArray.length; m++) {
     
       for (var i = 0; i < 100; i++) {
         for (var j = 0; j < 100; j++) {
-            for (var k = 0; k < 1; k++) {
+            for (var k = 0; k < 200; k++) {
                                             var testingRay = testingCamera.generateRay(i,j);
             var testingOne = tracing(testingRay, 0);
             
@@ -89,7 +89,8 @@ for (var m = 0; m < pictureArray.length; m++) {
          }
             }
 
-            pictureArray[i][j] = pictureArray[i][j] / 1;
+            pictureArray[i][j] = pictureArray[i][j] / 200;
+            document.write(k);
         }
     }
                    console.log("THe array: " + pictureArray);
@@ -132,16 +133,13 @@ for (var r = 0; r < newtestOne.length; r++) {
     }
 }
 
-//if above 1.0, make 255. Else, scale it.
+var toMultiplyBy = 255 / maxValThing;
+
 console.log("After first: "+ newtestOne);
 for (var r = 0; r < newtestOne.length; r++) {
     for (var e = 0; e < 100; e++) {
-        var toMultiplyBy = 255 / maxValThing;
-        if (newtestOne[r][e] >= 2) {
-            newtestOne[r][e] = 255;
-        } else {
-            newtestOne[r][e] = newtestOne[r][e] * 127.5;
-        }
+
+        newtestOne[r][e] = newtestOne[r][e] * toMultiplyBy;
         
     }
 }

@@ -15,7 +15,7 @@ function Sphere(cen, rad, specular, rough, emit) {
 //Spheres in the scene.
 var theScene = [
     new Sphere(math.matrix([-30,0,25]), 30, 0.4, 0.1, 0.9),
-    new Sphere(math.matrix([10,10,30]), 20, 0.01, 0.01, 0)
+    new Sphere(math.matrix([10,30,35]), 20, 0.01, 0.95, 0)
 ];
 
 //calculates BRDF based on rays and material properties
