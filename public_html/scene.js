@@ -12,6 +12,7 @@ function Sphere(cen, rad, specular, rough, emit) {
     this.emittance = emit;
 }
 
+//hello, Github!
 var theScene = [
     new Sphere(math.matrix([-30,60,70]), 20, 0.01, 0.1, 0.1),
     new Sphere(math.matrix([1,60,70]), 50, 0.01, 0.1, 0.9),
